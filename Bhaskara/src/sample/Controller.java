@@ -27,7 +27,6 @@ public class Controller {
         float vB = parseFloat(valorB.getText());
         float vC = parseFloat(valorC.getText());
 
-        valorDelta.setText("Delta = " + ((Math.pow(vB, 2) - (4*vA*vC))));
 
        File pathBaixo = new File("src/sample/conbaixo.png");
        File pathCima = new File("src/sample/concima.png");
@@ -38,12 +37,13 @@ public class Controller {
         }else{
             concavidade.setImage(imageBaixo);
         }
-
-        float vD = parseFloat(valorDelta.getText());
+        float vD = (float) (Math.pow(vB, 2) - (4*vA*vC));
         float x1 = ((-vB + vD)/2*vA);
         float x2 = ((-vB - vD)/2*vA);
 
-        if (parseFloat(valorDelta.getText()) < 0){
+       valorDelta.setText("Delta = " + (vD));
+
+        if (vD < 0){
             valorX1.setText("Não possui raízes reais");
             valorX2.setText("Não possui raízes reais");
         }else {
